@@ -2,14 +2,41 @@
 
 Matriz2D::Matriz2D(){
     // Constructor por defecto
+    filas = 3;
+    columnas = 3;
+    ptr = new float*[3];
+    for(int fil = 0; fil < filas; fil++){
+        ptr[fil] = new float[3];
+        for(int col = 0; col < columas; col++){
+            ptr[fil][col] = 0.2;
+        }
+    }
 }
 
 Matriz2D::Matriz2D(int n){
     // Constructor con un parametro
+    filas = n;
+    columnas = n;
+    ptr = new float*[n];
+    for(int fil = 0; fil < filas; fil ++){
+        ptr[fil] = new float[columnas];
+        for(int col = 0; col < columnas;col++){
+            ptr[fil][col] = 0.3;
+        }
+    }
 }
 
 Matriz2D::Matriz2D(int n, int m){
     // Constructor con dos parametros
+    filas = n;
+    columnas = m;
+    ptr = new float*[n];
+    for(int fil = 0; fil < filas; fil++){
+        ptr[fil] = new float[columnas];
+        for(int col = 0; col < columnas; col++){
+            ptr[fil][col] = 0.2;
+        }
+    }
 }
 
 Matriz2D::Matriz2D(const Matriz2D& m){
