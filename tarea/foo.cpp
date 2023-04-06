@@ -41,10 +41,31 @@ Matriz2D::Matriz2D(int n, int m){
 
 Matriz2D::Matriz2D(const Matriz2D& m){
     // Constructor de copia
+    filas = m.filas;
+    columnas = m.columnas;
+    ptr = new float*[filas];
+    for(int fil = 0; fil < filas; fil++){
+        ptr[fil] = new float[columnas];
+        for(int col = 0; col < columnas; col++){
+            ptr[fil][col] = m.ptr[i][col];
+        }
+    }
 }
 
 Matriz2D::Matriz2D(Matriz2D&& m){
     // Constructor de movimiento
+    filas = m.filas;
+    columnas = m.columnas;
+    ptr = new float*[filas];
+    for(int fil = 0; fil < filas; fil++){
+        ptr[fil] = new float[columnas];
+        for(int col = 0; col< columnas; col++){
+            ptr[fil][col] = m.ptr[fil][col];
+        }
+    }
+    m.columnas = 0;
+    m.filas = 0;
+    m.ptr = nullptr;
 }
 
 Matriz2D t(Matriz2D& m){
