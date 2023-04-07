@@ -85,6 +85,25 @@ std::ostream& operator<<(std::ostream& os, const Matriz2D& m){
 
 Matriz2D operator+(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador +
+    Matriz2D m3(m1.fila, m1.colum);
+    for(int fil = 0; fil < m1.fila; fil++){
+        for(int col = 0; col < m2.colum; col++){
+            m3.ptr[fil][col] = m1.ptr[fil][col] + m2.ptr[fil][col];
+        }
+    }
+    return m3;
+}
+
+Matriz2D operator+(const Matriz2D& m, float n){
+    // Sobrecarga del operador +
+    Matriz2D m2(m.fila, m.colum);
+    for(int fil = 0; fil < m.fila; fil++){
+        for(int col = 0; col < m.colum; col++){
+            m2.ptr[fil][col] = m.ptr[fil][col] + n;
+        }
+    }
+    return m2;
+
 }
 
 Matriz2D operator-(const Matriz2D& m1, const Matriz2D& m2){
@@ -93,10 +112,6 @@ Matriz2D operator-(const Matriz2D& m1, const Matriz2D& m2){
 
 Matriz2D operator*(const Matriz2D& m1, const Matriz2D& m2){
     // Sobrecarga del operador *
-}
-
-Matriz2D operator+(const Matriz2D& m, float n){
-    // Sobrecarga del operador +
 }
 
 Matriz2D operator-(const Matriz2D& m, float n){
