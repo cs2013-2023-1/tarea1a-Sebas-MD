@@ -17,7 +17,7 @@ Matriz2D::Matriz2D(int n){
     // Constructor con un parametro
     filas = n;
     columnas = n;
-    ptr = new float*[n];
+    ptr = new float*[filas];
     for(int fil = 0; fil < filas; fil ++){
         ptr[fil] = new float[columnas];
         for(int col = 0; col < columnas;col++){
@@ -30,7 +30,7 @@ Matriz2D::Matriz2D(int n, int m){
     // Constructor con dos parametros
     filas = n;
     columnas = m;
-    ptr = new float*[n];
+    ptr = new float*[filas];
     for(int fil = 0; fil < filas; fil++){
         ptr[fil] = new float[columnas];
         for(int col = 0; col < columnas; col++){
@@ -70,7 +70,7 @@ Matriz2D::Matriz2D(Matriz2D&& m){
 
 Matriz2D t(Matriz2D& m){
     // Transpuesta de una matriz
-    Matriz2D m2(m.columna, m.filas);
+    Matriz2D m2(m.columnas, m.filas);
     for(int fil= 0; fil < m.columnas; fil++){
         for(int col = 0; col < m.filas; col++){
             m2.ptr[fil][col] = m.ptr[col][fil];
@@ -92,9 +92,9 @@ Matriz2D operator+(const Matriz2D& m1, const Matriz2D& m2){
 
 Matriz2D operator+(const Matriz2D& m, float n){
     // Sobrecarga del operador +
-    Matriz2D m2(m.filas, m.columnas);
-    for(int fil = 0; fil < m.filas; fil++){
-        for(int col = 0; col < m.columnas; col++){
+    Matriz2D m2(m.fila, m.colum);
+    for(int fil = 0; fil < m.fila; fil++){
+        for(int col = 0; col < m.colum; col++){
             m2.ptr[fil][col] = m.ptr[fil][col] + n;
         }
     }
@@ -169,7 +169,6 @@ std::ostream& operator<<(std::ostream& cout, const Matriz2D& m){
     }
     return cout;
 }
-
 float Matriz2D::get(int i, int j){
     return ptr[i][j];
 }
